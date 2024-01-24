@@ -1,41 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>21 - Imported models</title>
-    <link rel="stylesheet" href="./bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css">
-</head>
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body>
+  <body>
     <main class="main">
-        <section class="section py-5">
-            <div class="container">
-                <h1>Titre h1</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, dolorum at. Repellendus officia
-                    magnam maiores neque labore reprehenderit ut facere ex eaque, illum atque sed nam, deleniti
-                    consequuntur id error.</p>
-            </div>
-        </section>
-        <section class="section">
-            <canvas class="webgl"></canvas>
-            <div class="marker marker-1">
-                <div class="marker-label" tabindex="0">1</div>
-                <div class="marker-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-            </div>
-        
-            <div class="marker marker-2">
-                <div class="marker-label" tabindex="0">2</div>
-                <div class="marker-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</div>
-            </div>
-        </section>
-    </main>
+      <header class="Header">
+        <div class="container-fluid">
+          <div class="credit">
+            Réaliser par : Clément Vives, Bastien Garnier, Candice Fradet,
+            Maxime Thibault, Lilou Lopez, Mattèo Gauthier
+          </div>
+          <div class="logo">
+            <img src="/img/Group 14 1.png" alt="" />
+          </div>
+          <h1 class="H1">
+            Catalina,<span class="subtitle">sa voix et son Domra</span>
+          </h1>
+          <p>
+            Incididunt Lorem ut ipsum cillum ea esse pariatur enim. Duis est in
+            nostrud esse do amet. Aliqua nostrud quis enim ex aliqua non dolore
+            velit excepteur veniam dolor qui qui velit reprehenderit
+          </p>
+        </div>
+      </header>
 
+      <section class="section">
+        <img class="sectionbg" src="/img/Backgroundpaper.png" alt="" />
+        <div class="container position-relative">
+          <div>
+            <img src="/img/eglise.png" alt="" />
+            <h2 class="H2">Église Saint-André de Kiyv</h2>
+            <h3 class="H3">Symbole culturel</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos,
+              dolorum at. Repellendus officia magnam maiores neque labore
+              reprehenderit ut facere ex eaque, illum atque sed nam, deleniti
+              consequuntur id error.
+            </p>
+          </div>
+
+          <div>
+            <img src="/img/Tournesol.png" alt="" />
+            <h2>Les tournessolles</h2>
+            <h3>Symbole culturel</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos,
+              dolorum at. Repellendus officia magnam maiores neque labore
+              reprehenderit ut facere ex eaque, illum atque sed nam, deleniti
+              consequuntur id error.
+            </p>
+          </div>
+
+          <div>
+            <img src="/img/fleurbleu.png" alt="" />
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <canvas class="webgl"></canvas>
+        <div class="marker marker-1">
+          <div class="marker-label" tabindex="0">1</div>
+          <div class="marker-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          </div>
+        </div>
+
+        <div class="marker marker-2">
+          <div class="marker-label" tabindex="0">2</div>
+          <div class="marker-text">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          </div>
+        </div>
+      </section>
+    </main>
 
     <script type="module" src="./bootstrap.bundle.min.js"></script>
     <script type="module" src="./script.js"></script>
-</body>
-
+  </body>
 </html>
