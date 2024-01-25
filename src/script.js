@@ -241,11 +241,13 @@ window.addEventListener("mousemove", (event) => {
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
+  alpha: true
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearAlpha(0)
 
 /**
  * Animate
@@ -295,13 +297,7 @@ const tick = () => {
     playCordSound(objectName);
   }
 
-  // Render
-  const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    alpha: true
-})
   renderer.render(scene, camera);
-  renderer.setClearAlpha(0)
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
