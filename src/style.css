@@ -1,147 +1,158 @@
+/* Global */
+
 :root {
-    --noir : #161616; 
-    --blanc : #ffffff;
+  --noir: #161616;
+  --blanc: #ffffff;
 }
 
-*
-{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 html,
-body
-{
-    overflow-x: clip;
-    overflow-y: auto;
+body {
+  overflow-x: clip;
+  overflow-y: auto;
 }
 
 .section {
-    position: relative;
+  position: relative;
 }
 
-.webgl
-{
-    width: 100%;
-    height: 400px;
-    outline: none;
+.webgl {
+  width: 100%;
+  height: 400px;
+  outline: none;
 }
 
+/* Three.js markers */
 
 .marker {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .marker:hover .marker-text,
 .marker-label:focus ~ .marker-text {
-    opacity: 1;
+  opacity: 1;
 }
 
 .marker .marker-label {
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #00000077;   
-    color: #ffffff;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    font-size: 1rem;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: help;
-    transform: scale(0, 0);
-    transition: transform .3s;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #00000077;
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  transform: scale(0, 0);
+  transition: transform 0.3s;
 }
 
 .marker.visible .marker-label {
-    transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 .marker .marker-text {
-    position: absolute;
-    top: 30px;
-    left: -120px;
-    width: 240px;
-    box-sizing: border-box;
-    padding: 20px;
-    border-radius: 4px;
-    background: #00000077;
-    color: #ffffff;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 100;
-    font-size: 1rem;
-    line-height: 1.3em;
-    text-align: center;
-    opacity: 0;
-    transition: opacity .3s;
-    pointer-events: none;
+  position: absolute;
+  top: 30px;
+  left: -120px;
+  width: 240px;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 4px;
+  background: #00000077;
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+  line-height: 1.3em;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
 
-
-  .main {
-    background : radial-gradient(44.92% 209.62% at -82.85% 77.51%, #2BCCFF 0%, rgba(255, 255, 255, 0.00) 100%, rgba(152, 230, 255, 0.00) 100%), radial-gradient(144.2% 67.7% at 2.78% 119.09%, #40AFFF 0%, rgba(255, 255, 255, 0.00) 100%), radial-gradient(134.92% 172.86% at 105.38% 37.02%, #40AFFF 0%, rgba(158, 183, 191, 0.00) 100%), radial-gradient(90.59% 71% at 7.4% 3.88%, #40AFFF 0%, #9EB7BF 100%);
-    
-  }
-
-  .test
-  {
-    background-image: url(/static/img/Backgroundpaper.png);
-  }
-  .sectionbg {
-    position: absolute;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .footer {
-    background-image: url(./../static/img/footer.png);
-    position: relative;
-    height: 240px;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 20px;
+/* Webpage */
+.body {
+  background: radial-gradient(
+      44.92% 209.62% at -82.85% 77.51%,
+      #2bccff 0%,
+      rgba(255, 255, 255, 0) 100%,
+      rgba(152, 230, 255, 0) 100%
+    ),
+    radial-gradient(
+      144.2% 67.7% at 2.78% 119.09%,
+      #40afff 0%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    radial-gradient(
+      134.92% 172.86% at 105.38% 37.02%,
+      #40afff 0%,
+      rgba(158, 183, 191, 0) 100%
+    ),
+    radial-gradient(90.59% 71% at 7.4% 3.88%, #40afff 0%, #9eb7bf 100%);
 }
-  
 
-  .header {
-    padding-top: 20px;
-    color: var(--blanc);
-    height: 60dvh;
-  }
-  
-  .header .h1 {
-    text-align: center;
-    font-size: 7rem;
-    font-weight: bold;
-  }
-  .header .subtitle {
-    display: block;
-    font-size: 2.625rem;
+/* Header */
+
+.sectionbg {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* Footer */
+.footer {
+  background-image: url(./../static/img/footer.png);
+  position: relative;
+  height: 240px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
+
+.header {
+  padding-top: 20px;
+  color: var(--blanc);
+  height: 60dvh;
+}
+
+.header .h1 {
+  text-align: center;
+  font-size: 7rem;
+  font-weight: bold;
+}
+.header .subtitle {
+  display: block;
+  font-size: 2.625rem;
 }
 
 .header .desc {
-    text-align: center;
+  text-align: center;
 }
 .section h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 .sectiontextclair {
-    color: var(--blanc);
+  color: var(--blanc);
 }
 .bloctext {
-    font-size: 1.5rem;
-    line-height: normal;
-
+  font-size: 1.5rem;
+  line-height: normal;
 }
