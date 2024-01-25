@@ -10,7 +10,9 @@ import GUI from "lil-gui";
 // Debug
 const gui = new GUI({
   closeFolders: true,
+  
 });
+gui.hide() 
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
