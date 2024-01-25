@@ -3,16 +3,15 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import GUI from "lil-gui";
-import Plyr from 'plyr';
+import Plyr from "plyr";
 
 /**
  * Plyr video
  */
 
-const players = document.querySelectorAll('.player')
+const players = document.querySelectorAll(".player");
 
-for(const player of players)
-{
+for (const player of players) {
   const plyr = new Plyr(player);
 }
 
@@ -22,9 +21,8 @@ for(const player of players)
 // Debug
 const gui = new GUI({
   closeFolders: true,
-  
 });
-gui.hide() 
+gui.hide();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -44,57 +42,66 @@ const playCordSound = (name) => {
   const objectName = name;
 
   switch (name) {
-    case "cord1":
-      // console.log("cord 1 sound");
-      //   soundCord1.volume = Math.random();
+    case "CordA":
       soundCord1.currentTime = 0;
       soundCord1.play();
       break;
 
-    case "cord2":
-      // console.log("cord 2 sound");
-      //   soundCord1.volume = Math.random();
+    case "CordB":
       soundCord2.currentTime = 0;
       soundCord2.play();
       break;
 
-    case "cord3":
-      //   console.log("cord 3 sound");
+    case "CordC":
       soundCord3.volume = Math.random();
       soundCord3.currentTime = 0;
       soundCord3.play();
       break;
 
-    case "cord4":
-      //   console.log("cord 4 sound");
+    case "CordD":
       soundCord4.volume = Math.random();
       soundCord4.currentTime = 0;
       soundCord4.play();
       break;
   }
-  // soundCord1.volume = Math.random()
 };
 
 /**
- * Models
+ * Loaders
  */
+// Texture loader
+const textureLoader = new THREE.TextureLoader();
+
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath("/draco/");
 
 const gltfLoader = new GLTFLoader();
 gltfLoader.setDRACOLoader(dracoLoader);
 
+/**
+ * Textures
+ */
+const bakedTexture = textureLoader.load('/models/domra/domra_texture.jpg')
+bakedTexture.flipY = false
+bakedTexture.colorSpace = THREE.SRGBColorSpace
+
+/**
+ * Materials
+ */
+// Baked material
+const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture });
+
+/**
+ * Models
+ */
+
 gltfLoader.load(
-  "/models/domra_v1.glb",
+  "/models/domra/domra_model.glb",
   (gltf) => {
-    // const children = [...gltf.scene.children]
-
-    // for(const child of children)
-    // {
-    //     scene.add(child)
-    // }
-
-    // gltf.scene.scale.set(0.025, 0.025, 0.025)
+    gltf.scene.traverse((child) => {
+      child.material = bakedMaterial;
+    });
+    gltf.scene.rotateZ(- Math.PI * 0.15)
     scene.add(gltf.scene);
   },
   () => {
@@ -104,54 +111,6 @@ gltfLoader.load(
     console.log("error");
   }
 );
-
-/**
- * TEMPORARY MESHES
- */
-const cordGeometry = new THREE.CylinderGeometry(
-  0.0125, // radiusTop
-  0.0125, // radiusBottom
-  2.85, // height
-  3 //radialSegments
-);
-
-const cordMaterial = new THREE.MeshPhysicalMaterial({ color: "#ffffff" });
-
-const cord1 = new THREE.Mesh(cordGeometry, cordMaterial);
-cord1.name = "cord1";
-const cord2 = new THREE.Mesh(cordGeometry, cordMaterial);
-cord2.name = "cord2";
-const cord3 = new THREE.Mesh(cordGeometry, cordMaterial);
-cord3.name = "cord3";
-const cord4 = new THREE.Mesh(cordGeometry, cordMaterial);
-cord4.name = "cord4";
-
-cord1.position.set(0, 1.6, 0.25);
-cord2.position.set(0.06, 1.6, 0.25);
-cord3.position.set(0.12, 1.6, 0.25);
-cord4.position.set(0.18, 1.6, 0.25);
-
-scene.add(cord1, cord2, cord3, cord4);
-
-const cord1Tweaks = gui.addFolder("Cord 1");
-cord1Tweaks.add(cord1.position, "x").min(-1).max(1).step(0.001);
-cord1Tweaks.add(cord1.position, "y").min(-5).max(5).step(0.001);
-cord1Tweaks.add(cord1.position, "z").min(-1).max(1).step(0.001);
-
-const cord2Tweaks = gui.addFolder("Cord 2");
-cord2Tweaks.add(cord2.position, "x").min(-1).max(1).step(0.001);
-cord2Tweaks.add(cord2.position, "y").min(-5).max(5).step(0.001);
-cord2Tweaks.add(cord2.position, "z").min(-1).max(1).step(0.001);
-
-const cord3Tweaks = gui.addFolder("Cord 3");
-cord3Tweaks.add(cord3.position, "x").min(-1).max(1).step(0.001);
-cord3Tweaks.add(cord3.position, "y").min(-5).max(5).step(0.001);
-cord3Tweaks.add(cord3.position, "z").min(-1).max(1).step(0.001);
-
-const cord4Tweaks = gui.addFolder("Cord 4");
-cord4Tweaks.add(cord4.position, "x").min(-1).max(1).step(0.001);
-cord4Tweaks.add(cord4.position, "y").min(-5).max(5).step(0.001);
-cord4Tweaks.add(cord4.position, "z").min(-1).max(1).step(0.001);
 
 /**
  * Markers
@@ -172,24 +131,12 @@ const markers = [
  */
 const raycaster = new THREE.Raycaster();
 
-// g
 
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff, 4);
+const ambientLight = new THREE.AmbientLight(0xffffff, Math.PI * 0.5);
 scene.add(ambientLight);
-
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1.8);
-directionalLight.castShadow = true;
-directionalLight.shadow.mapSize.set(1024, 1024);
-directionalLight.shadow.camera.far = 15;
-directionalLight.shadow.camera.left = -7;
-directionalLight.shadow.camera.top = 7;
-directionalLight.shadow.camera.right = 7;
-directionalLight.shadow.camera.bottom = -7;
-directionalLight.position.set(5, 5, 5);
-scene.add(directionalLight);
 
 /**
  * Sizes
@@ -223,14 +170,13 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(2, 2, 2);
+camera.position.set(0, 2, 3);
 scene.add(camera);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
-controls.target.set(0, 0.75, 0);
+controls.target.set(0, 1, 0);
 controls.enableDamping = true;
-controls.enableZoom = false
 
 /**
  * Mouse
@@ -247,13 +193,14 @@ window.addEventListener("mousemove", (event) => {
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
-  alpha: true
+  alpha: true,
+  antialias: true
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setClearAlpha(0)
+renderer.setClearAlpha(0);
 
 /**
  * Animate
@@ -295,7 +242,6 @@ const tick = () => {
   // Cast a ray
   raycaster.setFromCamera(mouse, camera);
 
-  const objectsToTest = [cord1, cord2, cord3, cord4];
   const cordIntersects = raycaster.intersectObjects(scene.children, true);
 
   if (cordIntersects.length && cordIntersects[0].object.name) {

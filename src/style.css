@@ -167,6 +167,7 @@ body {
 
 .plyr {
   border: 8px solid var(--blanc);
+  aspect-ratio: 16/9;
 }
 
 /* Footer */
