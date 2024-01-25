@@ -8,7 +8,13 @@ import Plyr from 'plyr';
 /**
  * Plyr video
  */
-const player = new Plyr('#player');
+
+const players = document.querySelectorAll('.player')
+
+for(const player of players)
+{
+  const plyr = new Plyr(player);
+}
 
 /**
  * Base

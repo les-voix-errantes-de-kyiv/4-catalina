@@ -16,17 +16,34 @@ body {
   overflow-y: auto;
 }
 
-.section {
+.section,
+.section.section-paper {
   position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
+
+.section + .section {
+  padding-top: 0;
+}
+
+.section:last-child{
+  padding-bottom: 0;
+}
+
+/* Utils */
+
+.mb-title {
+  margin-bottom: 40px;
+}
+
+/* Three.js */
 
 .webgl {
   width: 100%;
   height: 400px;
   outline: none;
 }
-
-/* Three.js markers */
 
 .marker {
   position: absolute;
@@ -105,14 +122,53 @@ body {
     radial-gradient(90.59% 71% at 7.4% 3.88%, #40afff 0%, #9eb7bf 100%);
 }
 
-/* Header */
-
-.sectionbg {
+.section-paper .section-bg {
   position: absolute;
-  object-fit: cover;
   width: 100%;
   height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  object-position: top;
+  overflow-y: visible;
 }
+.section-paper .h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: normal;
+}
+.section-paper .h2 .subtitle {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.sectiontextclair {
+  color: var(--blanc);
+}
+
+.bloctext {
+  font-size: 1.125rem;
+  line-height: normal;
+}
+
+.img-paper,
+.img-fleur-bleue {
+  width: 200px;
+}
+
+
+/* Plyr */
+
+.plyr {
+  border: 8px solid var(--blanc);
+}
+
 /* Footer */
 .footer {
   background-image: url(./../static/img/footer.png);
@@ -126,33 +182,56 @@ body {
   padding-bottom: 20px;
 }
 
+/* Header */
 .header {
   padding-top: 20px;
   color: var(--blanc);
-  height: 60dvh;
+  min-height: 70dvh;
 }
 
 .header .h1 {
-  text-align: center;
-  font-size: 7rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 .header .subtitle {
   display: block;
-  font-size: 2.625rem;
+  font-size: 1.75rem;
 }
 
-.header .desc {
-  text-align: center;
-}
-.section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-.sectiontextclair {
-  color: var(--blanc);
-}
-.bloctext {
-  font-size: 1.5rem;
+.credit {
   line-height: normal;
+}
+
+@media (min-width: 992px) {
+  .header {
+    height: 60dvh;
+    min-height: auto;
+  }
+  .header .h1 {
+    text-align: center;
+    font-size: 7rem;
+  }
+  .header .subtitle {
+    font-size: 2.625rem;
+  }
+  .header .desc {
+    text-align: center;
+  }
+  .bloctext {
+    font-size: 1.5rem;
+  }
+  .mb-title {
+    margin-bottom: 88px;
+  }
+  .section,
+  .section.section-paper {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+  .section-paper .h2 {
+    font-size: 2.125rem;
+  }
+  .section-paper .h2 .subtitle {
+    font-size: 1.75rem;
+  }
 }
