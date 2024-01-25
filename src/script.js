@@ -166,20 +166,7 @@ const markers = [
  */
 const raycaster = new THREE.Raycaster();
 
-/**
- * Floor
- */
-const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(10, 10),
-  new THREE.MeshStandardMaterial({
-    color: "#444444",
-    metalness: 0,
-    roughness: 0.5,
-  })
-);
-floor.receiveShadow = true;
-floor.rotation.x = -Math.PI * 0.5;
-scene.add(floor);
+// g
 
 /**
  * Lights
@@ -309,7 +296,12 @@ const tick = () => {
   }
 
   // Render
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    alpha: true
+})
   renderer.render(scene, camera);
+  renderer.setClearAlpha(0)
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
