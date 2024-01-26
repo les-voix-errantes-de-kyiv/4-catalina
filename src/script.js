@@ -22,7 +22,7 @@ for (const player of players) {
 const gui = new GUI({
   closeFolders: true,
 });
-// gui.hide();
+gui.hide();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -105,7 +105,7 @@ gltfLoader.load(
     scene.add(gltf.scene);
   },
   () => {
-    console.log("progress");
+    // console.log("progress");
   },
   () => {
     console.log("error");
@@ -125,14 +125,6 @@ const markers = [
     element: document.querySelector(".marker-2"),
   },
 ];
-
-gui.add(markers[0].position, 'x').min(-5).max(5).step(0.01).name('marker 1 x')
-gui.add(markers[0].position, 'y').min(-5).max(5).step(0.01).name('marker 1 y')
-gui.add(markers[0].position, 'z').min(-5).max(5).step(0.01).name('marker 1 z')
-
-gui.add(markers[1].position, 'x').min(-5).max(5).step(0.01).name('marker 2 x')
-gui.add(markers[1].position, 'y').min(-5).max(5).step(0.01).name('marker 2 y')
-gui.add(markers[1].position, 'z').min(-5).max(5).step(0.01).name('marker 2 z')
 
 /**
  * Raycaster
@@ -179,18 +171,13 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.set(1.4, 0.9, 2.25);
 scene.add(camera);
-gui.add(camera.position, "x").min(-5).max(5).step(0.01).name("camera position");
-gui.add(camera.position, "y").min(-5).max(5).step(0.01).name("camera position");
-gui.add(camera.position, "z").min(-5).max(5).step(0.01).name("camera position");
-console.log(camera);
+
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(0.7, 1.5, 0);
 controls.enableDamping = true;
 controls.enableZoom = false
-gui.add(controls.target, "x").min(-5).max(5).step(0.01).name("controls target");
-gui.add(controls.target, "y").min(-5).max(5).step(0.01).name("controls target");
-gui.add(controls.target, "z").min(-5).max(5).step(0.01).name("controls target");
+
 /**
  * Mouse
  */
