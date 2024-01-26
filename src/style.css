@@ -136,6 +136,16 @@ body {
   margin-right: 7px;
 }
 
+
+@media (orientation: portrait) {
+  .webgl {
+    pointer-events: none;
+  }
+  .marker {
+    display: none !important;
+  }
+}
+
 /* Webpage */
 .body {
   background: #40afff;
@@ -207,6 +217,10 @@ body {
   z-index: -1;
 }
 
+.section-paper .item-content {
+  font-weight: 500;
+}
+
 /* Plyr */
 
 .plyr {
@@ -231,7 +245,6 @@ body {
 .header {
   padding-top: 20px;
   color: var(--blanc);
-  min-height: 70dvh;
 }
 
 .header .h1 {
@@ -251,7 +264,6 @@ body {
 @media (min-width: 992px) {
   .header {
     height: 60dvh;
-    min-height: auto;
   }
   .header .h1 {
     text-align: center;
@@ -339,5 +351,8 @@ body {
 
   .section-paper .item-right {
     text-align: right;
+  }
+  .section-paper .item-content {
+    font-size: 1.5rem;
   }
 }

@@ -184,6 +184,7 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 if (isMobile) {
   console.log('User is on a mobile device.');
   controls.enabled = false
+  camera.position.set(1.4, 0.9, 3);
 } else {
   console.log('User is not on a mobile device.');
 }
