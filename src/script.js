@@ -37,6 +37,7 @@ const soundCord1 = new Audio("/sounds/cord1.mp3");
 const soundCord2 = new Audio("/sounds/cord2.mp3");
 const soundCord3 = new Audio("/sounds/cord3.mp3");
 const soundCord4 = new Audio("/sounds/cord4.mp3");
+const soundDomra = new Audio("/sounds/domra.mp3");
 
 const playCordSound = (name) => {
   const objectName = name;
@@ -188,6 +189,20 @@ if (isMobile) {
 } else {
   console.log('User is not on a mobile device.');
 }
+
+/**
+ * Event Listener
+ */
+
+document.querySelector('.section-webgl').addEventListener("click", (event) => {
+  console.log(isMobile)
+  if (isMobile) {
+    soundDomra.currentTime = 0;
+    soundDomra.play();
+    return
+  }
+}, false)
+
 
 /**
  * Mouse
