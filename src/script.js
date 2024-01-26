@@ -178,6 +178,16 @@ controls.target.set(0.7, 1.5, 0);
 controls.enableDamping = true;
 controls.enableZoom = false
 
+//mobile device 
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+if (isMobile) {
+  console.log('User is on a mobile device.');
+  controls.enabled = false
+} else {
+  console.log('User is not on a mobile device.');
+}
+
 /**
  * Mouse
  */
