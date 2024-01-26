@@ -1,8 +1,33 @@
 /* Global */
+@font-face {
+  font-family: "PPNeueMontreal";
+  font-weight: 400;
+  src:
+    local("PPNeueMontreal"),
+    url("./../static/fonts/PPNeueMontreal-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PPNeueMontreal";
+  font-weight: 500;
+  src:
+    local("PPNeueMontreal"),
+    url("./../static/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "PPNeueMontreal";
+  font-weight: 700;
+  src:
+    local("PPNeueMontreal"),
+    url("./../static/fonts/PPNeueMontreal-Bold.woff2") format("woff2");
+}
 
 :root {
   --noir: #161616;
+  --noir-rgb: 22, 22, 22;
   --blanc: #ffffff;
+  --blanc-rgb: 255, 255, 255;
 }
 
 * {
@@ -14,6 +39,7 @@ html,
 body {
   overflow-x: clip;
   overflow-y: auto;
+  font-family: "PPNeueMontreal";
 }
 
 .section,
@@ -27,7 +53,7 @@ body {
   padding-top: 0;
 }
 
-.section:last-child{
+.section:last-child {
   padding-bottom: 0;
 }
 
@@ -60,14 +86,15 @@ body {
   position: absolute;
   top: -20px;
   left: -20px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background: #00000077;
-  color: #ffffff;
+  border: 1px solid rgba(var(--blanc-rgb), 0.23);
+  background: rgba(var(--blanc-rgb), 0.14);
+  color: var(--blanc);
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -83,22 +110,29 @@ body {
 
 .marker .marker-text {
   position: absolute;
-  top: 30px;
-  left: -120px;
-  width: 240px;
+  top: 0;
+  left: 45px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 290px;
   box-sizing: border-box;
-  padding: 20px;
-  border-radius: 4px;
-  background: #00000077;
-  color: #ffffff;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  background: rgba(255, 255, 255, 0.47);
+  backdrop-filter: blur(3.8499999046325684px);
+  color: var(--blanc);
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 1rem;
   line-height: 1.3em;
-  text-align: center;
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
+}
+.marker .marker-text svg {
+  flex-shrink: 0;
+  margin-right: 7px;
 }
 
 /* Webpage */
@@ -162,6 +196,17 @@ body {
   width: 200px;
 }
 
+.section-webgl .h2 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--blanc);
+  font-size: 5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: -1;
+}
 
 /* Plyr */
 
@@ -193,6 +238,7 @@ body {
 .header .h1 {
   font-size: 3rem;
   font-weight: bold;
+  line-height: 1;
 }
 .header .subtitle {
   display: block;
@@ -234,5 +280,8 @@ body {
   }
   .section-paper .h2 .subtitle {
     font-size: 1.75rem;
+  }
+  .section-webgl .h2 {
+    font-size: 12.625rem;
   }
 }

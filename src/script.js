@@ -22,7 +22,7 @@ for (const player of players) {
 const gui = new GUI({
   closeFolders: true,
 });
-gui.hide();
+// gui.hide();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -81,9 +81,9 @@ gltfLoader.setDRACOLoader(dracoLoader);
 /**
  * Textures
  */
-const bakedTexture = textureLoader.load('/models/domra/domra_texture.jpg')
-bakedTexture.flipY = false
-bakedTexture.colorSpace = THREE.SRGBColorSpace
+const bakedTexture = textureLoader.load("/models/domra/domra_texture.jpg");
+bakedTexture.flipY = false;
+bakedTexture.colorSpace = THREE.SRGBColorSpace;
 
 /**
  * Materials
@@ -101,7 +101,7 @@ gltfLoader.load(
     gltf.scene.traverse((child) => {
       child.material = bakedMaterial;
     });
-    gltf.scene.rotateZ(- Math.PI * 0.15)
+    gltf.scene.rotateZ(-Math.PI * 0.15);
     scene.add(gltf.scene);
   },
   () => {
@@ -117,20 +117,27 @@ gltfLoader.load(
  */
 const markers = [
   {
-    position: new THREE.Vector3(0, 0, 0),
+    position: new THREE.Vector3(-1.5, 1.8, 0),
     element: document.querySelector(".marker-1"),
   },
   {
-    position: new THREE.Vector3(1, 1, 0),
+    position: new THREE.Vector3(0.7, 1, 0.22),
     element: document.querySelector(".marker-2"),
   },
 ];
+
+gui.add(markers[0].position, 'x').min(-5).max(5).step(0.01).name('marker 1 x')
+gui.add(markers[0].position, 'y').min(-5).max(5).step(0.01).name('marker 1 y')
+gui.add(markers[0].position, 'z').min(-5).max(5).step(0.01).name('marker 1 z')
+
+gui.add(markers[1].position, 'x').min(-5).max(5).step(0.01).name('marker 2 x')
+gui.add(markers[1].position, 'y').min(-5).max(5).step(0.01).name('marker 2 y')
+gui.add(markers[1].position, 'z').min(-5).max(5).step(0.01).name('marker 2 z')
 
 /**
  * Raycaster
  */
 const raycaster = new THREE.Raycaster();
-
 
 /**
  * Lights
@@ -170,14 +177,20 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.set(0, 2, 3);
+camera.position.set(1.4, 0.9, 2.25);
 scene.add(camera);
-
+gui.add(camera.position, "x").min(-5).max(5).step(0.01).name("camera position");
+gui.add(camera.position, "y").min(-5).max(5).step(0.01).name("camera position");
+gui.add(camera.position, "z").min(-5).max(5).step(0.01).name("camera position");
+console.log(camera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
-controls.target.set(0, 1, 0);
+controls.target.set(0.7, 1.5, 0);
 controls.enableDamping = true;
-
+controls.enableZoom = false
+gui.add(controls.target, "x").min(-5).max(5).step(0.01).name("controls target");
+gui.add(controls.target, "y").min(-5).max(5).step(0.01).name("controls target");
+gui.add(controls.target, "z").min(-5).max(5).step(0.01).name("controls target");
 /**
  * Mouse
  */
@@ -194,7 +207,7 @@ window.addEventListener("mousemove", (event) => {
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
   alpha: true,
-  antialias: true
+  antialias: true,
 });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
