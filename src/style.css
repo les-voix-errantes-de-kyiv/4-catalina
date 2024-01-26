@@ -2,24 +2,21 @@
 @font-face {
   font-family: "PPNeueMontreal";
   font-weight: 400;
-  src:
-    local("PPNeueMontreal"),
+  src: local("PPNeueMontreal"),
     url("./../static/fonts/PPNeueMontreal-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "PPNeueMontreal";
   font-weight: 500;
-  src:
-    local("PPNeueMontreal"),
+  src: local("PPNeueMontreal"),
     url("./../static/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "PPNeueMontreal";
   font-weight: 700;
-  src:
-    local("PPNeueMontreal"),
+  src: local("PPNeueMontreal"),
     url("./../static/fonts/PPNeueMontreal-Bold.woff2") format("woff2");
 }
 
@@ -115,9 +112,9 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 290px;
+  width: 300px;
   box-sizing: border-box;
-  padding: 8px;
+  padding: 8px 12px 8px 8px;
   border: 1px solid rgba(255, 255, 255, 0.23);
   background: rgba(255, 255, 255, 0.47);
   backdrop-filter: blur(3.8499999046325684px);
@@ -137,7 +134,8 @@ body {
 
 /* Webpage */
 .body {
-  background: radial-gradient(
+  background: #40afff;
+  background-image: radial-gradient(
       44.92% 209.62% at -82.85% 77.51%,
       #2bccff 0%,
       rgba(255, 255, 255, 0) 100%,
@@ -159,12 +157,12 @@ body {
 .section-paper .section-bg {
   position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
   left: 0;
   top: 0;
   object-fit: cover;
   object-position: top;
-  overflow-y: visible;
 }
 .section-paper .h2 {
   font-size: 1.875rem;
