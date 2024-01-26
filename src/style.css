@@ -349,6 +349,7 @@ body {
   }
 
   .section-paper .item-right {
+    margin-top: 330px;
     text-align: right;
   }
   .section-paper .item-content {
